@@ -50,33 +50,7 @@ function App() {
       label: "Active",
       icon: <FaCode />,
       child: (
-        // TODO: Change navigation color
-        <Carousel
-          autoplay={true}
-          loop={true}
-          prevArrow={({ handlePrev }) => (
-            <IconButton
-              variant="text"
-              color="black"
-              size="lg"
-              onClick={handlePrev}
-              className="!absolute top-2/4 lg:!left-4 md:!left-4 sm:!left-24 left-28 -translate-y-2/4"
-            >
-              <GrPrevious />
-            </IconButton>
-          )}
-          nextArrow={({ handleNext }) => (
-            <IconButton
-              variant="text"
-              color="black"
-              size="lg"
-              onClick={handleNext}
-              className="!absolute top-2/4 md:!right-4 sm:!right-24 right-28 -translate-y-2/4"
-            >
-              <GrNext />
-            </IconButton>
-          )}
-        >
+        <div className="flex gap-12">
           {projectContent.map((project) => {
             return (
               <div
@@ -94,14 +68,14 @@ function App() {
               </div>
             );
           })}
-        </Carousel>
+        </div>
       ),
     },
     {
-      label: "Upcoming",
+      label: "In Progress",
       icon: <GrInProgress />,
       child: (
-        <Carousel>
+        <>
           {projectContent.map((project) => {
             return (
               <div
@@ -111,10 +85,7 @@ function App() {
                 <ProjectCard
                   onButtonClick={() => window.open(project.url)}
                   icon={
-                    <img
-                      className="w-10 h-10"
-                      src="public/assets/classification.jpg"
-                    ></img>
+                    <img src="public/assets/autoclass-bg-removed.jpg"></img>
                   }
                   title={project.title}
                   description={project.description}
@@ -122,7 +93,7 @@ function App() {
               </div>
             );
           })}
-        </Carousel>
+        </>
       ),
     },
   ];
