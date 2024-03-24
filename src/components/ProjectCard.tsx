@@ -13,6 +13,7 @@ export function ProjectCard({
 }): JSX.Element {
   return (
     <div
+      onClick={onButtonClick}
       style={{
         background:
           // TODO: Make colors a props
@@ -22,17 +23,14 @@ export function ProjectCard({
       }}
       className="flex rounded-md bg-white min-w-64"
     >
-      <div className="flex flex-col m-4">
-        <div className="flex gap-3 items-center">
-          {icon}
-          <p className=" text-2xl font-bold text-black">{title}</p>
+      <div className="flex min-w-96 p-10 justify-start gap-5 items-center">
+        <div className="flex flex-col h-32">
+          <p className="text-7xl">Title</p>
+          <p className="text-3xl max-w-80">
+            Eye Catching Hook: dwadawdwadwadwad
+          </p>
         </div>
-        <div className="flex flex-col justify-start my-3 p-0">
-          <p className="w-64 text-lg text-black-200">{description}</p>
-        </div>
-        <BaseButton onClick={onButtonClick} className="font-hacked">
-          Check It Out
-        </BaseButton>
+        <div className="rounded-full max-w-96 aspect-square">{icon}</div>
       </div>
     </div>
   );

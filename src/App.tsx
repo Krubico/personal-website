@@ -86,10 +86,7 @@ function App() {
                 <ProjectCard
                   onButtonClick={() => window.open(project.url)}
                   icon={
-                    <img
-                      className="w-16 h-16"
-                      src="public/assets/autoclass-bg-removed.jpg"
-                    ></img>
+                    <img src="public/assets/autoclass-bg-removed.jpg"></img>
                   }
                   title={project.title}
                   description={project.description}
