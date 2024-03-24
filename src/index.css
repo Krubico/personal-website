@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "CyberwayRiders";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(public/fonts/CyberwayRiders-lg97d.ttf);
+  }
+  @font-face {
+    font-family: "Hacked";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(public/fonts/Hacked-KerX.ttf);
+  }
+  @font-face {
+    font-family: "Exoplanetaria";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(public/fonts/Exoplanetaria-gxxJ5.ttf);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
