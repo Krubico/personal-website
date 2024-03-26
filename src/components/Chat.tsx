@@ -27,6 +27,8 @@ export function Chat() {
     }
     if (messagesEndRef.current) {
       (messagesEndRef.current as HTMLElement).scrollIntoView({
+        block: "end",
+        inline: "nearest",
         behavior: "smooth",
       });
     }
@@ -50,7 +52,7 @@ export function Chat() {
                 <div className="ml-auto">
                   <ChatBubbleHuman key={`prompt-${index}`} text={prompt} />
                 </div>
-                {prevPrompts.length !== prevAiResponses.length &&
+                {prevPrompts.length > prevAiResponses.length &&
                 index === prevPrompts.length - 1 ? null : (
                   <ChatBubbleAI
                     key={`response-${index}`}
@@ -58,6 +60,13 @@ export function Chat() {
                   />
                 )}
               </>
+            );
+          }
+          if (prevAiResponses.length === 0) {
+            return (
+              <div className="ml-auto">
+                <ChatBubbleHuman key={`prompt-${index}`} text={prompt} />
+              </div>
             );
           }
         })}
@@ -76,8 +85,3 @@ export function Chat() {
     </section>
   );
 }
-
-// <div className="flex flex-col gap-3 p-3">
-//   <ChatBubbleAI text="Hello! I'm Krubics, your friendly AI assistant. How can I help you today?" />
-//   <ChatInput inputText={prompt} setInputText={setPrompt} />
-// </div>;

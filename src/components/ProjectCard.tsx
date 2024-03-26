@@ -21,16 +21,14 @@ export function ProjectCard({
         borderRadius: "1rem",
         border: "3px solid transparent",
       }}
-      className="flex rounded-md bg-white min-w-64"
+      className="flex rounded-md bg-white min-w-64 raise"
     >
       <div className="flex min-w-96 p-10 justify-start gap-5 items-center">
         <div className="flex flex-col h-32">
-          <p className="text-7xl">Title</p>
-          <p className="text-3xl max-w-80">
-            Eye Catching Hook: dwadawdwadwadwad
-          </p>
+          <p className="text-2xl">{title}</p>
+          <p className="text-xl max-w-80">{description}</p>
         </div>
-        <div className="rounded-full max-w-96 aspect-square">{icon}</div>
+        <div className="rounded-full w-24 aspect-square">{icon}</div>
       </div>
     </div>
   );

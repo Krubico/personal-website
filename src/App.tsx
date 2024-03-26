@@ -3,18 +3,20 @@ import "./index.css";
 import { ImgWithRoundedCorners } from "components/Image";
 import { HeroContent } from "components/HeroContent";
 import { ProjectCard } from "components/ProjectCard";
-import { Carousel, IconButton } from "@material-tailwind/react";
 import { FaLinkedin } from "react-icons/fa";
 import { BaseTabs } from "components/Tabs";
 import { GrInProgress } from "react-icons/gr";
 import { FaCode } from "react-icons/fa";
 import { Footer } from "components/Footer";
-import { GrNext, GrPrevious } from "react-icons/gr";
 import { BaseIconButton } from "components/BaseIconButton";
 import { VideoPlayer } from "components/VideoPlayer";
 import { SkillsSection } from "components/SkillsSection";
 import { Chat } from "components/Chat";
-
+import { BaseButton } from "components/BaseButton";
+import { PersonalStatus } from "components/PersonalStatus";
+import { ProjectShowcase } from "components/ProjectShowcase";
+import { WorkCard } from "components/WorkCard";
+import { CSSGrid } from "components/CSSGrid";
 // TODO: Font size at least 16px
 function App() {
   // TODO: Replace with actual project content
@@ -30,6 +32,7 @@ function App() {
       description: "Find the optimal classifier for your dataset!",
       url: "https://github.com/Krubico/AutoClass",
     },
+
     {
       title: "Back to Basics",
       description:
@@ -99,20 +102,20 @@ function App() {
   ];
 
   return (
-    <>
-      <div className="h-[110vh] px-10 bg-geo-pattern">
+    <div className="wrapper">
+      <div className="parallax custom-cursor h-[110vh] px-10 bg-geo-pattern">
         <div id="layout" className="relative h-[100vh] max-w-[1100px] m-auto">
           <div className="absolute w-full">
             <NavbarSimple />
           </div>
-          <div className="h-full flex flex-col justify-center">
-            <div
-              id="about-section"
-              className="flex w-full flex-wrap md:justify-between sm:justify-center justify-center gap-6"
-            >
+          <div
+            id="about-section"
+            className="flex h-full items-center gap-6 md:justify-between sm:justify-center justify-center "
+          >
+            <div className="flex">
               <HeroContent />
-              <div className="bg-tori-gate bg-contain">
-                <div className="translate-x-10">
+              <div className="bg-tori-gate bg-contain bg-no-repeat">
+                <div className="h-full translate-x-10">
                   <ImgWithRoundedCorners />
                 </div>
               </div>
@@ -121,10 +124,7 @@ function App() {
         </div>
       </div>
 
-      <div
-        id="projects-section"
-        className=" bg-blue-gray-400 bg-bottom bg-contain"
-      >
+      <div id="projects-section" className="bg-black bg-bottom bg-cover">
         <div className="max-w-[1100px] -translate-y-10 mx-auto">
           <VideoPlayer />
         </div>
@@ -135,11 +135,30 @@ function App() {
         </div>
       </div>
 
+      <ProjectShowcase />
+
+      <div className="bg-sandevistan bg-black w-[100wh] h-[100vh] bg-contain bg-no-repeat bg-center">
+        <div className="h-full grid grid-cols-2 grid-rows-2 gap-y-0 gap-x-40">
+          <div className="justify-self-start self-end col-start-2 col-span-1">
+            <WorkCard />
+          </div>
+          <div className="justify-self-end self-start col-start-1 row-start-2 col-span-1">
+            <WorkCard />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-geo-pattern">
+        <div id="layout" className="h-[100vh] max-w-[1100px] m-auto">
+          <Chat />
+        </div>
+      </div>
+
       <div className="bg-geo-pattern px-10">
         <div className="flex flex-col">
           <div className="flex flex-col gap-10 mx-auto my-20">
             <p className="m-auto max-w-[40rem] text-4xl text-center font-semibold">
-              Let's connect and see what cool things we can build together!
+              Let's Build Together!
             </p>
             <div className="flex justify-center">
               <BaseIconButton
@@ -159,13 +178,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="bg-geo-pattern">
-        <div id="layout" className="h-[100vh] max-w-[1100px] m-auto">
-          <Chat />
-        </div>
-      </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

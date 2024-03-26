@@ -10,12 +10,15 @@ export function BaseButton({
   style?: CSSProperties;
 }) {
   return (
-    <button
-      style={style}
-      onClick={onClick}
-      className="flex justify-center items-center bg-black text-white font-bold py-3 px-4 rounded-full hover:bg-green-500 hover:font-hacked active:font-hacked"
-    >
+    <button onClick={onClick} style={style} className="cybr-btn z-[100]">
       {children}
+      <span aria-hidden>_</span>
+      <span aria-hidden className="cybr-btn__glitch">
+        {children}
+      </span>
+      <span aria-hidden className="cybr-btn__tag">
+        R25
+      </span>
     </button>
   );
 }

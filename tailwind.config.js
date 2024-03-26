@@ -10,7 +10,7 @@ export default withMT({
   ],
   theme: {
     fontFamily: {
-      sans: ['"Exoplanetaria"', ...defaultTheme.fontFamily.sans],
+      sans: ["BlenderProBold", ...defaultTheme.fontFamily.sans],
       cyberpunk: ["CyberwayRiders"],
       hacked: ["Hacked"],
     },
@@ -22,6 +22,8 @@ export default withMT({
       hero: "url('public/assets/cyberpunk-bg.jpg')",
       "geo-pattern": "url('public/assets/geometric-pattern.jpg')",
       "tori-gate": "url('public/assets/tori-gate.jpg')",
+      "futuristic-border": "url('public/assets/futuristic-border.svg')",
+      sandevistan: "url('public/assets/sandevistan.jpg')",
     },
     animation: {
       typewriter: "typewriter 2s steps(11) forwards",
