@@ -1,147 +1,52 @@
-import { NavbarSimple } from "components/Navbar";
-import "./index.css";
-import { ImgWithRoundedCorners } from "components/Image";
-import { HeroContent } from "components/HeroContent";
-import { ProjectCard } from "components/ProjectCard";
-import { FaLinkedin } from "react-icons/fa";
-import { BaseTabs } from "components/Tabs";
-import { GrInProgress } from "react-icons/gr";
-import { FaCode } from "react-icons/fa";
-import { Footer } from "components/Footer";
-import { BaseIconButton } from "components/BaseIconButton";
-import { VideoPlayer } from "components/VideoPlayer";
-import { SkillsSection } from "components/SkillsSection";
-import { Chat } from "components/Chat";
-import { BaseButton } from "components/BaseButton";
-import { PersonalStatus } from "components/PersonalStatus";
-import { ProjectShowcase } from "components/ProjectShowcase";
-import { WorkCard } from "components/WorkCard";
-import { CSSGrid } from "components/CSSGrid";
-// TODO: Font size at least 16px
+import { useEffect } from "react";
+import {
+  Routes,
+  Route,
+  useNavigationType,
+  useLocation,
+} from "react-router-dom";
+import DesktopWebsite from "./pages/DesktopWebsite";
+
 function App() {
-  // TODO: Replace with actual project content
-  interface Project {
-    title: string;
-    description: string;
-    url: string;
-  }
+  const action = useNavigationType();
+  const location = useLocation();
+  const pathname = location.pathname;
 
-  const projectContent: Array<Project> = [
-    {
-      title: "AutoClass",
-      description: "Find the optimal classifier for your dataset!",
-      url: "https://github.com/Krubico/AutoClass",
-    },
+  useEffect(() => {
+    if (action !== "POP") {
+      window.scrollTo(0, 0);
+    }
+  }, [action, pathname]);
 
-    {
-      title: "Back to Basics",
-      description:
-        "Train and validate your RCNN Computer Vision models with Pytorch!",
-      url: "https://github.com/Krubico/Yet-Another-RCNN-CV-Model",
-    },
-  ];
+  useEffect(() => {
+    let title = "";
+    let metaDescription = "";
 
-  interface TabData {
-    label: string;
-    icon: JSX.Element;
-    child: JSX.Element;
-  }
+    switch (pathname) {
+      case "/":
+        title = "";
+        metaDescription = "";
+        break;
+    }
 
-  // TODO: Build Mechanism to stop too long titles and descriptions
-  const tabsData: Array<TabData> = [
-    {
-      label: "Active",
-      icon: <FaCode />,
-      child: <></>,
-    },
-    {
-      label: "In Progress",
-      icon: <GrInProgress />,
-      child: <></>,
-    },
-  ];
+    if (title) {
+      document.title = title;
+    }
+
+    if (metaDescription) {
+      const metaDescriptionTag: HTMLMetaElement | null = document.querySelector(
+        'head > meta[name="description"]'
+      );
+      if (metaDescriptionTag) {
+        metaDescriptionTag.content = metaDescription;
+      }
+    }
+  }, [pathname]);
 
   return (
-    <>
-      <div className="parallax custom-cursor h-[110vh] px-10 bg-geo-pattern">
-        <div id="layout" className="relative h-[100vh] max-w-[1100px] m-auto">
-          <div className="absolute w-full">
-            <NavbarSimple />
-          </div>
-          <div
-            id="about-section"
-            className="flex h-full items-center gap-6 md:justify-between sm:justify-center justify-center "
-          >
-            <div className="flex">
-              <HeroContent />
-              <div className="bg-tori-gate bg-contain bg-no-repeat">
-                <div className="h-full translate-x-10">
-                  <ImgWithRoundedCorners />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="projects-section" className="bg-black bg-bottom bg-cover">
-        <div className="max-w-[1100px] -translate-y-10 mx-auto">
-          <VideoPlayer />
-        </div>
-        <div className="flex justify-center">
-          <div className="my-16">
-            <BaseTabs startValue={tabsData[0].label} data={tabsData}></BaseTabs>
-          </div>
-        </div>
-      </div>
-
-      <ProjectShowcase />
-
-      <div className="bg-sandevistan bg-black w-[100wh] h-[100vh] bg-contain bg-no-repeat bg-center">
-        <div className="h-full grid grid-cols-2 grid-rows-2 gap-y-0 gap-x-40">
-          <div className="justify-self-start self-end col-start-2 col-span-1">
-            <WorkCard />
-          </div>
-          <div className="justify-self-end self-start col-start-1 row-start-2 col-span-1">
-            <WorkCard />
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-geo-pattern">
-        <div
-          id="layout"
-          className="flex h-[100vh] py-10 max-w-[1100px] items-center justify-center m-auto"
-        >
-          <Chat />
-        </div>
-
-        <div className="flex flex-col">
-          <div className="flex flex-col gap-10 mx-auto my-20">
-            <p className="m-auto max-w-[40rem] text-4xl text-center font-semibold">
-              Let's Build Together!
-            </p>
-            <div className="flex justify-center">
-              <BaseIconButton
-                onClick={() => {
-                  window.open(
-                    "https://www.linkedin.com/in/yong-jia-hui-50a87a19b/"
-                  );
-                }}
-              >
-                <FaLinkedin />
-                <p>LinkedIn</p>
-              </BaseIconButton>
-            </div>
-          </div>
-          <div className="mb-10">
-            <SkillsSection />
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<DesktopWebsite />} />
+    </Routes>
   );
 }
-
 export default App;

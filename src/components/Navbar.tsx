@@ -1,76 +1,33 @@
-import { useEffect, useState } from "react";
-import { Navbar, Collapse, IconButton } from "@material-tailwind/react";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { PersonalStatus } from "components/PersonalStatus";
-export function NavList() {
-  // TODO: Add the correct hrefs to the anchor tags
+import { motion } from "framer-motion";
+
+export function NavBar() {
   return (
-    <ul className="my-2 flex flex-col gap-2 md:mb-0 md:mt-0 md:flex-row md:items-center md:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <PersonalStatus />
-      <li className="p-1 text-sm">
-        <a
-          href="#about-section"
-          className="flex items-center hover:text-green-500 transition-colors "
-        >
-          About
-        </a>
-        <hr className="border-2 border-cyberpunk-yellow" />
-      </li>
-      <li className="p-1 text-sm">
-        <a
-          href="#projects-section"
-          className="flex items-center hover:text-green-500 transition-colors"
-        >
-          Projects
-        </a>
-        <hr className="border-2 border-cyberpunk-yellow" />
-      </li>
-      <FaGithub className="text-lg" />
-      <FaLinkedin className="text-lg" />
-    </ul>
-  );
-}
-
-export function NavbarSimple() {
-  const [openNav, setOpenNav] = useState(false);
-
-  const handleWindowResize = () =>
-    window.innerWidth >= 960 && setOpenNav(false);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-
-  return (
-    <div className="flex justify-center">
-      <Navbar color="transparent">
-        <div className="flex items-center justify-end text-blue-gray-900">
-          <div className="hidden lg:block md:block">
-            <NavList />
-          </div>
-          <IconButton
-            variant="text"
-            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent md:hidden lg:hidden"
-            ripple={false}
-            onClick={() => setOpenNav(!openNav)}
-          >
-            {openNav ? (
-              <XMarkIcon className="h-6 w-6" strokeWidth={2} />
-            ) : (
-              <Bars3Icon className="h-6 w-6" strokeWidth={2} />
-            )}
-          </IconButton>
+    <motion.header
+      className="flex flex-col items-center justify-center self-stretch px-main-content-padding py-[0rem]"
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <nav className="font-section-header m-0 flex flex-row items-center justify-between self-stretch px-[0rem] py-spacing-sm text-left text-[1.913rem] text-black">
+        <div className="flex flex-row items-center justify-start gap-[0.5rem]">
+          <img
+            className="relative h-[3.125rem] w-[3.125rem] object-cover"
+            alt=""
+            src="/logo-image@2x.png"
+          />
+          <b className="relative">Jia Hui</b>
         </div>
-        <Collapse open={openNav}>
-          <NavList />
-        </Collapse>
-      </Navbar>
-    </div>
+        <nav className="font-manrope m-0 flex flex-row items-center justify-center gap-[1rem] text-left text-[1.75rem] text-black max-lg:hidden">
+          <div className="relative font-medium">About</div>
+          <div className="relative font-medium">Experience</div>
+          <div className="relative font-medium">Projects</div>
+        </nav>
+        <button className="flex cursor-pointer flex-col items-center justify-center overflow-hidden rounded-71xl bg-black p-[2rem] [border:none]">
+          <b className="relative self-stretch text-center font-title-description text-[1.75rem] text-white">
+            Let’s Connect
+          </b>
+        </button>
+      </nav>
+    </motion.header>
   );
 }

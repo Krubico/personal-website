@@ -1,0 +1,86 @@
+@tailwind base;
+/* TODO: Figure out why preflight not working */
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap");
+
+/* TODO: Remove once preflight works */
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+/* TODO: Till Here */
+
+*,
+::before,
+::after {
+  border-width: 0;
+}
+
+@media only screen and (max-width: 490px) {
+  :root {
+    font-size: 62.5%;
+  }
+}
+
+/* 
+@keyframes shrink-out {
+  90% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100px);
+  }
+} */
+
+.shrink-out-animation {
+  animation: shrink-out linear both;
+  animation-timeline: view(y);
+  animation-duration: 3ms;
+}
+
+@keyframes tilt-left-in {
+  0% {
+    transform: rotate(30deg);
+  }
+
+  40% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes tilt-right-in {
+  0% {
+    transform: rotate(-30deg);
+  }
+
+  40% {
+    transform: rotate(0deg);
+  }
+}
+
+.left-project-card-animation {
+  animation-name: tilt-left-in;
+}
+
+.right-project-card-animation {
+  animation-name: tilt-right-in;
+}
+
+.scroll-linear {
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-timeline: view(y);
+}
