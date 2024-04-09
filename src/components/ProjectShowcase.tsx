@@ -33,7 +33,7 @@ export function ProjectShowcase() {
   return (
     <div
       id="projects-section"
-      className="flex parallax bg-tori-gate bg-bottom bg-contain h-[200vh]"
+      className="flex parallax bg-tori-gate bg-bottom bg-contain bg-no-repeat h-[200vh]"
     >
       <div className="flex flex-col items-center justify-center max-w-[1100px] h-[200vh] mx-auto bottom-0">
         {projectContent.map((project) => {

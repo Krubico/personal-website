@@ -52,57 +52,17 @@ function App() {
     {
       label: "Active",
       icon: <FaCode />,
-      child: (
-        <div className="flex gap-12">
-          {projectContent.map((project) => {
-            return (
-              <div
-                key={project.title}
-                className="flex justify-center mt-16 mb-16"
-              >
-                <ProjectCard
-                  onButtonClick={() => window.open(project.url)}
-                  icon={
-                    <img src="public/assets/autoclass-bg-removed.jpg"></img>
-                  }
-                  title={project.title}
-                  description={project.description}
-                ></ProjectCard>
-              </div>
-            );
-          })}
-        </div>
-      ),
+      child: <></>,
     },
     {
       label: "In Progress",
       icon: <GrInProgress />,
-      child: (
-        <>
-          {projectContent.map((project) => {
-            return (
-              <div
-                key={project.title}
-                className="flex justify-center mt-16 mb-16"
-              >
-                <ProjectCard
-                  onButtonClick={() => window.open(project.url)}
-                  icon={
-                    <img src="public/assets/autoclass-bg-removed.jpg"></img>
-                  }
-                  title={project.title}
-                  description={project.description}
-                ></ProjectCard>
-              </div>
-            );
-          })}
-        </>
-      ),
+      child: <></>,
     },
   ];
 
   return (
-    <div className="wrapper">
+    <>
       <div className="parallax custom-cursor h-[110vh] px-10 bg-geo-pattern">
         <div id="layout" className="relative h-[100vh] max-w-[1100px] m-auto">
           <div className="absolute w-full">
@@ -149,12 +109,13 @@ function App() {
       </div>
 
       <div className="bg-geo-pattern">
-        <div id="layout" className="h-[100vh] max-w-[1100px] m-auto">
+        <div
+          id="layout"
+          className="flex h-[100vh] py-10 max-w-[1100px] items-center justify-center m-auto"
+        >
           <Chat />
         </div>
-      </div>
 
-      <div className="bg-geo-pattern px-10">
         <div className="flex flex-col">
           <div className="flex flex-col gap-10 mx-auto my-20">
             <p className="m-auto max-w-[40rem] text-4xl text-center font-semibold">
@@ -179,7 +140,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

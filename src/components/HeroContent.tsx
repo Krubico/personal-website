@@ -59,26 +59,14 @@ export function HeroContent() {
   });
 
   return (
-    <div className="flex flex-col justify-center min-w-[50%] max-w-[60%] gap-3">
+    <div className="flex flex-col justify-between min-w-[50%] max-w-[60%] gap-3">
       <p className="text-9xl font-cyberpunk text-cyberpunk-yellow">
         {titleText}
       </p>
-      <div className="flex flex-col font-base gap-4">
-        <div className="flex gap-3 justify-start items-center ">
-          <MdBusinessCenter className="text-2xl" />
-          <p className="text-2xl text-black">{firstRole}</p>
-        </div>
-        <div className="flex gap-3 justify-start items-center">
-          <FaCode className="text-2xl" />
-          <p className="text-2xl text-black">{secondRole}</p>
-        </div>
-        <div className="flex gap-3 justify-start items-center ">
-          <BsRobot className="text-2xl" />
-          <p className="text-2xl text-black">{thirdRole}</p>
-        </div>
-        <p className="font-base">{descText}</p>
-      </div>
-      <div className="mt-auto">
+      <p className="text-3xl">
+        I like learning, inventing and challenging norms
+      </p>
+      <div className="">
         <BaseIconButton
           style={{ width: "10rem" }}
           onClick={() => {

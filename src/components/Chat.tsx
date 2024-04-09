@@ -39,11 +39,14 @@ export function Chat() {
   return (
     <section
       id="chat-section"
-      className="bg-black h-full rounded-md flex flex-col justify-end"
+      className="w-full bg-[#275F48] h-full rounded-md flex flex-col justify-end"
     >
       {/* TODO: Style scrollbar */}
       {/* TODO: Do loading... progress */}
-      <div className="flex flex-col px-3 overflow-scroll no-scrollbar">
+      <div
+        id="chat-section"
+        className="flex flex-col max-h-[50vh] py-3 px-3 overflow-scroll overflow-x-hidden"
+      >
         <ChatBubbleAI text="Hello! I'm Krubics, your friendly AI assistant. How can I help you today?" />
         {prevPrompts.map((prompt, index) => {
           for (let i = 0; i < prevAiResponses.length; i++) {
